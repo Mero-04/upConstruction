@@ -3,7 +3,7 @@ const router = express.Router();
 const { Blog, Contact, Category } = require("../models/model")
 const multer = require("multer");
 const imageUpload = require("../helpers/image-upload");
-const upload = multer({ dest: 'uploads/' })
+const upoad = multer({ dest: 'uploads/' })
 
 router.get("/", (req, res) => {
     res.render("admin/home_admin")
