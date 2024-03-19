@@ -5,7 +5,7 @@ const PORT = process.env.PORT;
 const ejs = require("ejs")
 app.set("view engine", "ejs")
 app.use(express.static("public"))
-app.use(express.son())
+app.use(express.json())
 app.use(express.urlencoded())
 
 const sequelize = require("./data/db")
