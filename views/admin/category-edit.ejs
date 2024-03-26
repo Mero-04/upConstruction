@@ -18,20 +18,16 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Blog edit page  <i class="fas fa-edit"></i></h3> </div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Category edit page  <i class="fas fa-edit"></i></h3> </div>
                                     <div class="card-body">
                                         <form action="" method="post" >
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="input" type="text" name="title" placeholder="Add title" value="<%= blog.title %>"/>
-                                                <label for="input">Title</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" name="description" placeholder="add descripton" value="<%= blog.description %>" />
-                                                <label for="inputEmail">Description</label>
+                                                <input class="form-control" id="input" type="text" name="name" placeholder="Add title" value="<%= category.name %>"/>
+                                                <label for="input">Name</label>
                                             </div>
                                             <div class="d-flex justify-content-between" style="padding: 0px 75px;">
                                                 <button type="submit" class="btn btn-success">Save</button>
-                                                <a href="/admin/blog" class="btn btn-danger">Cancel</a>
+                                                <a href="/admin/category" class="btn btn-danger">Cancel</a>
                                             </div>
                                         </form>
                                     </div>

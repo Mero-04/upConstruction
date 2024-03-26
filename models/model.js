@@ -55,6 +55,27 @@ const Category = sequelize.define("category", {
     }
 });
 
+const User = sequelize.define("user", {
+    id: {
+        type: DataTypes.INTEGER(10),
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+});
+
 
 Category.hasMany(Blog)
 Blog.belongsTo(Category)
@@ -63,5 +84,6 @@ Blog.belongsTo(Category)
 module.exports = {
     Blog,
     Contact,
-    Category
+    Category,
+    User
 };

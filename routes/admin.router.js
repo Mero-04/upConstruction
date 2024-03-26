@@ -157,6 +157,28 @@ router.get("/category/:categoryId", async (req, res) => {
     })
 })
 
+router.get("/category/edit/:categoryId", async (req, res) => {
+    const id = req.params.categoryId;
+    const category = await Category.findByPk(id)
+    res.render("admin/category-edit", {
+        category: category
+    })
+})
+
+//bcrypt
+//jsonwebtoken
+
+
+router.post("/category/edit/:categoryId", async (req, res) => {
+    const category = await Category.findByPk(req.params.categoryId);
+    if (category) {
+        category.name = req.body.name,
+        category.save()
+
+        res.redirect("/admin/category")
+    }
+})
+
 router.get("/category/delete/:categoryId", async (req, res) => {
     const category = await Category.findByPk(req.params.categoryId)
     res.render("admin/category_delete", {
