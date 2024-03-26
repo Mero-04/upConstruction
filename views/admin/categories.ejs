@@ -65,6 +65,16 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <% if (action == "create") { %>
+                             <div class="alert alert-success">
+                                Categori ustunlikli gosuldy
+                             </div>
+                            <% } %>
+                            <% if (action == "delete") { %>
+                                <div class="alert alert-danger">
+                                   Categori ustunlikli pozuldy
+                                </div>
+                               <% } %>
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>

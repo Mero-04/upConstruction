@@ -50,7 +50,8 @@ router.get("/blog", async (req, res) => {
 
 router.get("/", (req, res) => {
     res.render("index", {
-        page: "home"
+        page: "home",
+        isAuth: req.cookies.isAuth
     })
 })
 

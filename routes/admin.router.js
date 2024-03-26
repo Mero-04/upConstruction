@@ -47,7 +47,9 @@ router.post("/contact/delete/:contactId", async (req, res) => {
 
 
 router.get("/blog", async (req, res) => {
-    const blogs = await Blog.findAll({ include: Category });
+    const blogs = await Blog.findAll({
+        include: {model: Category}
+    });
     res.render("admin/blogs", {
         bloglar: blogs
     })
@@ -129,7 +131,8 @@ router.post("/blog/delete/:blogId", async (req, res) => {
 router.get("/category", async (req, res) => {
     const category = await Category.findAll();
     res.render("admin/categories", {
-        category: category
+        category: category,
+        action: req.query.action
     })
 });
 
@@ -143,7 +146,7 @@ router.post("/category-add", async (req, res) => {
         const category = await Category.create({
             name: req.body.name
         })
-        res.redirect("/admin/category");
+        res.redirect("/admin/category?action=create");
     } catch (err) {
         console.log(err)
     }
@@ -190,7 +193,7 @@ router.post("/category/delete/:categoryId", async (req, res) => {
     const category = await Category.findByPk(req.params.categoryId);
     if (category) {
         category.destroy();
-        res.redirect("/admin/category")
+        res.redirect("/admin/category?action=delete")
     } else {
         console.log("Category tapylmady")
     }
