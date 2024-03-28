@@ -3,9 +3,9 @@ const router = express.Router();
 const { User } = require("../models/model");
 const bcrypt = require("bcrypt")
 
-router.get("/register", (req, res) => {
-    res.render("auth/register")
-})
+const AuthController = require("../controllers/auth.controller")
+
+router.get("/register", AuthController.register )
 
 router.post("/register", async (req, res) => {
     const password = req.body.password;
@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
             email: req.body.email,
             password: hashedPassword
         })
-        res.redirect("/")
+        res.redirect("/auth/login")
     }
 })
 
@@ -40,7 +40,9 @@ router.post("/login", async (req,res)=>{
         res.render("auth/login")
     } else {
         const pass = await bcrypt.compare(req.body.password, user.password)
-        res.cookie("isAuth", 1)
+        // res.cookie("isAuth", 1)
+        req.session.isAuth = true;
+        req.session.username = user.username;
         res.redirect("/")
     }
 })

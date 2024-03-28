@@ -5,12 +5,13 @@
         <li><a href="/about" <% if (page =="about") { %> class="active" <% } %>>About</a></li>
         <li><a href="/service" <% if (page =="service") { %> class="active" <% } %>>Services</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <% if (typeof isAuth !== "undefined" && isAuth == 1) { %>
+        <% if (isAuth) { %>
          <li><a href="/blog"<% if (page =="blog") { %> class="active" <% } %>>Blog</a></li>
         <% } %>
         <li><a href="/contact"<% if (page =="contact") { %> class="active" <% } %>>Contact</a></li>
-        <% if (typeof isAuth == "undefined" && isAuth !== 1) { %>
+        <% if (!isAuth) { %>
             <li><a href="/auth/register">Sign-in</a></li>
         <% } %> 
+        <li><a href="#"><%= username %></a></li>
     </ul>
 </nav>
